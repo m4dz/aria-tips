@@ -1,0 +1,31 @@
+{
+  "name": "aria-tips",
+  "version": "0.1.0",
+  "description": "Aria tooltips standalone micro-library",
+  "main": "build/lib/aria-tips.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/m4dz/aria-tips.git"
+  },
+  "keywords": [
+    "aria",
+    "tooltips"
+  ],
+  "author": "m4dz <code@m4dz.net>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/m4dz/aria-tips/issues"
+  },
+  "homepage": "https://github.com/m4dz/aria-tips",
+  "dependencies": {
+    "autoprefixer-brunch": "^1.8.4",
+    "browser-sync-brunch": "0.0.9",
+    "clean-css-brunch": "^1.7.2",
+    "coffee-script-brunch": "^1.8.1",
+    "css-brunch": "^1.7.0",
+    "javascript-brunch": "^1.7.1",
+    "stylus-brunch": "^1.8.1",
+    "uglify-js-brunch": "^1.7.8"
+  }
+}

@@ -1,0 +1,98 @@
+tooltip-color        = rgba(0,0,0,.8)
+tooltip-shadow-color = rgba(255,255,255,.55)
+tooltip-arrow-width  = 4px
+
+
+tooltip-position(direction)
+    factor      = direction in ('top' 'left')? 1 : -1
+    delta       = 50% * factor
+    arrow-delta = tooltip-arrow-width * 2 * factor
+
+    if direction in ('top' 'bottom')
+        transform translateX(-50%) translateY(delta)
+        &[aria-hidden=false]
+            transform translateX(-50%) translateY(0)
+        &::before
+            left 50%
+            transform translateX(-50%) translateY(arrow-delta)
+    else
+        transform translateX(delta) translateY(-50%)
+        &[aria-hidden=false]
+            transform translateX(0) translateY(-50%)
+        &::before
+            top: 50%
+            transform translateX(arrow-delta) translateY(-50%)
+
+    &::before
+        border-{direction}-color       tooltip-color
+        {opposite-position(direction)} 0
+
+
+// Default tooltip styles
+[role=tooltip]
+    position absolute
+    top      -9999px
+    left     -9999px
+
+    display block
+    margin  0
+    padding .875em
+
+    box-shadow       0 0 2px tooltip-shadow-color
+    border-radius    2px
+    white-space      nowrap
+    background-color tooltip-color
+    color            #fff
+    font-family      sans-serif
+    font-size        .75em
+
+
+    pre
+        display        inline-block
+        margin         0
+        padding-left   .35em
+        vertical-align baseline
+        font-size      1.2em
+        color          #999
+
+
+    &::before
+        content  ''
+        display  block
+        position absolute
+        width    0
+        height   0
+        border   tooltip-arrow-width solid transparent
+
+
+    // Direction: top
+    &[data-tooltip-direction=top]
+        tooltip-position('top')
+
+    // Direction: bottom
+    &[data-tooltip-direction=bottom]
+        tooltip-position('bottom')
+
+    // Direction: left
+    &[data-tooltip-direction=left]
+        tooltip-position('left')
+
+    // Direction: right
+    &[data-tooltip-direction=right]
+        tooltip-position('right')
+
+
+
+// Apparition affect
+[role=tooltip]
+    visibility hidden
+    opacity    0.1
+
+    transition-property        visibility, opacity, transform
+    transition-duration        280ms
+    transition-timing-function ease-out
+
+
+    &[aria-hidden=false]
+        visibility       visible
+        opacity          1
