@@ -14,5 +14,10 @@ exports.config =
                 'lib/aria-tips.css': /^src/
                 'styles/test.css': /^test/
 
-        templates:
-            joinTo: 'lib/aria-tips.js'
+    modules:
+        wrapper: false
+        definition: false
+
+    overrides:
+        production:
+            plugins: off: ['browser-sync-brunch']
