@@ -7,7 +7,7 @@ We often want some tooltips to get extra-information about what an element does.
 
 ## Installation
 
-Simply put the `aria-tips.js` and `aria-tips.css` (available in the `public/lib` directory, or from the release page) to your `vendors` scripts and styles. Then, link them in you document:
+Simply put the `aria-tips.js` and `aria-tips.css` (available in the `dist/lib` directory, or from the release page) to your `vendors` scripts and styles. Then, link them in you document:
 
 ```html
 <head>
