@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Aria Tips → Test</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="styles/test.css">
+    <link rel="stylesheet" href="lib/aria-tips.css">
+</head>
+<body>
+    <div id="main-container">
+        <h1>Aria Tips → Test</h1>
+        <ul>
+            <li>
+                <button aria-describedby="tooltip-bottom" aria-label="ctrl+o">hover me ↓</button>
+                <p role="tooltip" id="tooltip-bottom" data-tooltip-direction="bottom" aria-hidden="true">this is the hover description in a tooltip :]</p>
+            </li>
+            <li>
+                <button aria-describedby="tooltip-right">hover me →</button>
+                <p role="tooltip" id="tooltip-right" data-tooltip-direction="right" aria-hidden="true">this tooltip takes place on right-edge<br/>on two lines</p>
+            </li>
+            <li>
+                <button aria-describedby="tooltip-left">hover me ←</button>
+                <p role="tooltip" id="tooltip-left" data-tooltip-direction="left" aria-hidden="true">this one on left (and doesn't append an extra label)</p>
+            </li>
+            <li>
+                <button aria-describedby="tooltip-top">hover me ↑</button>
+                <p role="tooltip" id="tooltip-top" data-tooltip-direction="top" aria-hidden="true">and a top one!</p>
+            </li>
+            <li>
+                <div aria-describedby="tooltip-bottom" aria-label="ctrl+y">this one uses the same tip as the first-one</div>
+            </li>
+            <li>
+                <div aria-describedby="tooltip-left" data-tooltip-direction="top">this uses the 3rd tip but positionned on top</div>
+            </li>
+        </ul>
+    </div>
+    <script src="lib/aria-tips.js" onload="require('aria-tips').bind();"></script>
+</body>
+</html>
