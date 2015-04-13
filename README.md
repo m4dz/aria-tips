@@ -49,3 +49,10 @@ If you bind a same tooltip to many elements, and you want it to be attached in a
 ```
 
 You can also pass extra content to the tooltip using the [`aria-label`](http://www.w3.org/TR/wai-aria/states_and_properties#aria-label) attribute. I originally use it to describe the keyboard shortcuts bound to an element. So if a `aria-label` attribute is on the element, _aria-tips_ will append it in a `pre` element inside the tooltip when it appears.
+
+
+## Styles
+
+The given stylesheet provides basic styles for tips (such as colors) and animatio. You should probably want to keep it as it, but you can also build your own styles and transition effects.
+
+If you just want to customize tips rendering, you can simply deal with background-color / shadow-color / arrow-width to adapt it to your design. You can do it in another stylesheet or use the provided stylus one and change top-variables values.
