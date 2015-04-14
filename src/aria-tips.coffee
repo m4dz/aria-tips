@@ -22,6 +22,7 @@
     attachTooltips = ->
         tips = document.querySelectorAll '[role=tooltip]'
         for tip in tips
+            # Tips need to be appended to body for global positioning.
             document.body.appendChild tip
             controls = document.querySelectorAll "[aria-describedby=#{tip.id}]"
             bindHoverEvents.call control for control in controls
@@ -68,7 +69,7 @@
         labels = @querySelectorAll 'pre.label'
         label.parentNode.removeChild label for label in labels
 
-        labelText = control.getAttribute('aria-label');
+        labelText = control.getAttribute 'aria-label'
         return unless labelText
 
         label = document.createElement 'pre'
