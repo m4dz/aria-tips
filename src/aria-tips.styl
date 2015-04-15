@@ -1,13 +1,28 @@
-tooltip-color        = rgba(0,0,0,.8)
-tooltip-shadow-color = rgba(255,255,255,.55)
+// background color
+tooltip-color        = rgba(0, 0, 0, .8)
+
+// shadow color
+tooltip-shadow-color = rgba(255, 255, 255, .55)
+
+// arrow width
 tooltip-arrow-width  = 4px
 
 
+// Get tooltip position for a given direction.
+// `direction` must be in ['top', 'bottom', 'left', 'right'].
 tooltip-position(direction)
+
+    // Positive to top/left, negative to bottom/right.
     factor      = direction in ('top' 'left')? 1 : -1
+
+    // Define the origin position of the tooltip's animation.
     delta       = 25% * factor
+
+    // Define the space for the tooltip's arrow
     arrow-delta = tooltip-arrow-width * 2 * factor
 
+
+    // Define appearing/disappearing animation of the tooltip.
     if direction in ('top' 'bottom')
         transform translateX(-50%) translateY(delta)
         &[aria-hidden=false]
@@ -23,6 +38,7 @@ tooltip-position(direction)
             top 50%
             transform translateX(arrow-delta) translateY(-50%)
 
+    // Arrow styling.
     &::before
         border-{direction}-color       tooltip-color
         {opposite-position(direction)} 0
