@@ -56,3 +56,11 @@ You can also pass extra content to the tooltip using the [`aria-label`](http://w
 The given stylesheet provides basic styles for tips (such as colors) and animatio. You should probably want to keep it as it, but you can also build your own styles and transition effects.
 
 If you just want to customize tips rendering, you can simply deal with background-color / shadow-color / arrow-width to adapt it to your design. You can do it in another stylesheet or use the provided stylus one and change top-variables values.
+
+## Dev
+
+If you want to develop on aria-tips, all you need to know is the following commands:
+
+    npm run dev # start the watcher with a server
+    npm run build # build the sources
+    npm run lint # run the linter on the code
