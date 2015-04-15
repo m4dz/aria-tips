@@ -11,6 +11,8 @@
 
     arrowDelta = 6
 
+    unbinders = []
+
     oppositePosition = (position) ->
         switch position
             when 'top'    then 'bottom'
@@ -20,12 +22,20 @@
 
 
     attachTooltips = ->
+        unbindAll()
         tips = document.querySelectorAll '[role=tooltip]'
         for tip in tips
             # Tips need to be appended to body for global positioning.
             document.body.appendChild tip
             controls = document.querySelectorAll "[aria-describedby=#{tip.id}]"
-            bindHoverEvents.call control for control in controls
+            for control in controls
+                unbinder = bindHoverEvents.call control
+                unbinders.push unbinder
+
+
+    unbindAll = ->
+        unbinder() for unbinder in unbinders
+        unbinders = []
 
 
     positionTooltip = (control)->
@@ -109,5 +119,17 @@
         @addEventListener 'mouseover', onMouseOver
         @addEventListener 'mouseout', onMouseOut
 
-    return bind: -> attachTooltips()
+        unbindEvents = =>
+            tip.removeEventListener 'mouseover', onMouseOver
+            tip.removeEventListener 'mouseout', onMouseOut
+            @removeEventListener 'mouseover', onMouseOver
+            @removeEventListener 'mouseout', onMouseOut
+
+        return unbindEvents
+
+    return {
+        bind: -> attachTooltips()
+        unbind: -> unbindAll()
+    }
+
 )
