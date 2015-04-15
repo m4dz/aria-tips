@@ -5,7 +5,7 @@ tooltip-arrow-width  = 4px
 
 tooltip-position(direction)
     factor      = direction in ('top' 'left')? 1 : -1
-    delta       = 50% * factor
+    delta       = 25% * factor
     arrow-delta = tooltip-arrow-width * 2 * factor
 
     if direction in ('top' 'bottom')
@@ -20,7 +20,7 @@ tooltip-position(direction)
         &[aria-hidden=false]
             transform translateX(0) translateY(-50%)
         &::before
-            top: 50%
+            top 50%
             transform translateX(arrow-delta) translateY(-50%)
 
     &::before
