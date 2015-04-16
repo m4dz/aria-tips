@@ -90,6 +90,10 @@
             x: 0 | boundingBox.left + (boundingBox.right - boundingBox.left) / 2
             y: 0 | boundingBox.top + (boundingBox.bottom - boundingBox.top) / 2
 
+        # Add page offset to get the right position when the page is scrolled.
+        center.x = center.x + window.pageXOffset
+        center.y = center.y + window.pageYOffset
+
         # Initialize the tooltip positionning.
         result =
             top:    'auto'
@@ -99,10 +103,14 @@
 
         # Get the direction's position value.
         position = switch direction
-            when 'top'    then window.innerHeight - boundingBox.top
-            when 'bottom' then boundingBox.bottom
-            when 'left'   then window.innerWidth - boundingBox.left
-            when 'right'  then boundingBox.right
+            when 'top'
+                window.innerHeight - boundingBox.top - window.pageYOffset
+            when 'bottom'
+                boundingBox.bottom + window.pageYOffset
+            when 'left'
+                window.innerWidth - boundingBox.left - window.pageXOffset
+            when 'right'
+                boundingBox.right + window.pageXOffset
 
         # Get the opposite direction's position value.
         oppositeDirection = oppositePosition direction
