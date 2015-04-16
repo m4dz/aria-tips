@@ -2,11 +2,11 @@
 ((root, factory) ->
 
     # If AMD is used.
-    if typeof define is "function" and define.amd
+    if typeof define is 'function' and define.amd
         define [], factory
 
     # If CommonJS is used.
-    else if typeof module is "object" and module.exports
+    else if typeof module is 'object' and module.exports
         module.exports = factory()
 
     # Otherwise bind to `window` object.
@@ -77,7 +77,7 @@
     positionTooltip = (trigger) ->
 
         # Reset tooltip's direction if it has been previously overriden.
-        resetTooltip.call @
+        resetTooltip.call this
 
         # Direction can be defined in the trigger or in the tooltip. The trigger
         # has priority.
@@ -188,10 +188,10 @@
                 tip.setAttribute 'aria-hidden', false
             else
                 # Initialize the tooltip.
-                fillTooltipLabel.call tip, @
+                fillTooltipLabel.call tip, this
 
                 # Position the tooltip.
-                positionTooltip.call tip, @
+                positionTooltip.call tip, this
 
                 # Mark as shown after a short duration.
                 timeout = setTimeout ->
