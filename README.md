@@ -12,9 +12,11 @@ Simply put the `aria-tips.js` and `aria-tips.css` (available in the `dist/lib` d
 ```html
 <head>
     <link rel="stylesheet" href="lib/aria-tips.css">
-    <script async src="lib/aria-tips.js"></script>
+    <script async src="lib/aria-tips.js" onload="AriaTips.bind();"></script>
 </head>
 ```
+
+To bind the tooltips, just use the `bind` method offered by the module. Yo can also disable all tooltips by using the `unbind` method.
 
 _Note_: If you use a builder tool, you'll probably want to wrap the script / css files direclty in your final build.
 
@@ -56,6 +58,7 @@ You can also pass extra content to the tooltip using the [`aria-label`](http://w
 The given stylesheet provides basic styles for tips (such as colors) and animatio. You should probably want to keep it as it, but you can also build your own styles and transition effects.
 
 If you just want to customize tips rendering, you can simply deal with background-color / shadow-color / arrow-width to adapt it to your design. You can do it in another stylesheet or use the provided stylus one and change top-variables values.
+
 
 ## Dev
 
