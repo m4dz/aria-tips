@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>Aria Tips → Demo</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="styles/test.css">
+    <link rel="stylesheet" href="lib/aria-tips.css">
+</head>
+<body>
+    <header>
+        <h1>Aria Tips</h1>
+        <nav>
+            <ul>
+                <li><i class="icon-documentation"></i><a href="https://github.com/m4dz/aria-tips/blob/master/README.md">See the documentation</a></li>
+                <li><i class="icon-download"></i><a href="https://github.com/m4dz/aria-tips/releases/download/0.2.0/aria-tips-lib-0.2.0.zip">Download latest</a></li>
+                <li><i class="icon-github"></i><a href="https://github.com/m4dz/aria-tips">View project on Github</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <p>
+            This page is a sample page for <em><a href="https://github.com/m4dz/aria-tips">aria-tips</a></em>, a tiny and clever JS library that provides a support for tooltips using <a href="http://www.w3.org/TR/wai-aria/">ARIA</a> declarations.
+        </p>
+        <div class="demo">
+            <p>You test it on elements below:</p>
+
+        <ul>
+            <li>
+                <pre><code class="html">&lt;button aria-describedby="tooltip-bottom" aria-label="ctrl+o"&gt;hover me ↓&lt;/button&gt;
+&lt;p role="tooltip" id="tooltip-bottom" data-tooltip-direction="bottom" aria-hidden="true"&gt;this is the hover description in a tooltip :]&lt;/p&gt;</code></pre>
+                <button aria-describedby="tooltip-bottom" aria-label="ctrl+o">hover me ↓</button>
+                <p role="tooltip" id="tooltip-bottom" data-tooltip-direction="bottom" aria-hidden="true">this is the hover description in a tooltip :]</p>
+            </li>
+            <li>
+                <pre><code class="html">&lt;button aria-describedby="tooltip-right"&gt;hover me →&lt;/button&gt;
+&lt;p role="tooltip" id="tooltip-right" data-tooltip-direction="right" aria-hidden="true"&gt;this tooltip takes place on right-edge&lt;br/&gt;on two lines</p></code></pre>
+                <button aria-describedby="tooltip-right">hover me →</button>
+                <p role="tooltip" id="tooltip-right" data-tooltip-direction="right" aria-hidden="true">this tooltip takes place on right-edge<br/>on two lines</p>
+            </li>
+            <li>
+                <pre><code class="html">&lt;button aria-describedby="tooltip-left"&gt;hover me ←&lt;/button&gt;
+&lt;p role="tooltip" id="tooltip-left" data-tooltip-direction="left" aria-hidden="true"&gt;this one on left (and doesn't append an extra label)&lt;/p&gt;</code></pre>
+                <button aria-describedby="tooltip-left">hover me ←</button>
+                <p role="tooltip" id="tooltip-left" data-tooltip-direction="left" aria-hidden="true">this one on left (and doesn't append an extra label)</p>
+            </li>
+            <li>
+                <pre><code class="html">&lt;button aria-describedby="tooltip-top"&gt;hover me ↑&lt;/button&gt;
+&lt;p role="tooltip" id="tooltip-top" data-tooltip-direction="top" aria-hidden="true"&gt;and a top one!&lt;/p&gt;</code></pre>
+                <button aria-describedby="tooltip-top">hover me ↑</button>
+                <p role="tooltip" id="tooltip-top" data-tooltip-direction="top" aria-hidden="true">and a top one!</p>
+            </li>
+            <li>
+                <pre><code class="html">&lt;div aria-describedby="tooltip-bottom" aria-label="ctrl+y"&gt;this one uses the same tip as the first-one&lt;/div&gt;</code></pre>
+                <div aria-describedby="tooltip-bottom" aria-label="ctrl+y">this one uses the same tip as the first-one</div>
+            </li>
+            <li>
+                <pre><code class="html">&lt;div aria-describedby="tooltip-left" data-tooltip-direction="top"&gt;this uses the 3rd tip but positionned on top&lt;/div&gt;</code></pre>
+                <div aria-describedby="tooltip-left" data-tooltip-direction="top">this uses the 3rd tip but positionned on top</div>
+            </li>
+        </ul>
+
+        </div>
+    </main>
+
+    <script src="scripts/test.js" onload="hljs.initHighlightingOnLoad();;"></script>
+    <script src="lib/aria-tips.js" onload="AriaTips.bind();"></script>
+</body>
+</html>
