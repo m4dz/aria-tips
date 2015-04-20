@@ -1,11 +1,11 @@
 // background color
-tooltip-color        = rgba(0, 0, 0, .8)
+tooltip-color = rgba(0, 0, 0, .8)
 
 // shadow color
 tooltip-shadow-color = rgba(255, 255, 255, .55)
 
 // arrow width
-tooltip-arrow-width  = 4px
+tooltip-arrow-width = 4px
 
 
 // Get tooltip position for a given direction.
@@ -13,10 +13,10 @@ tooltip-arrow-width  = 4px
 tooltip-position(direction)
 
     // Positive to top/left, negative to bottom/right.
-    factor      = direction in ('top' 'left')? 1 : -1
+    factor = direction in ('top' 'left')? 1 : -1
 
     // Define the origin position of the tooltip's animation.
-    delta       = 25% * factor
+    delta = tooltip-arrow-width * 4 * factor
 
     // Define the space for the tooltip's arrow
     arrow-delta = tooltip-arrow-width * 2 * factor
@@ -27,16 +27,20 @@ tooltip-position(direction)
         transform translateX(-50%) translateY(delta)
         &[aria-hidden=false]
             transform translateX(-50%) translateY(0)
+            &::before
+                transform translateX(-50%) translateY(arrow-delta)
         &::before
             left 50%
-            transform translateX(-50%) translateY(arrow-delta)
+            transform translateX(-50%) translateY(0)
     else
         transform translateX(delta) translateY(-50%)
         &[aria-hidden=false]
             transform translateX(0) translateY(-50%)
+            &::before
+                transform translateX(arrow-delta) translateY(-50%)
         &::before
             top 50%
-            transform translateX(arrow-delta) translateY(-50%)
+            transform translateX(0) translateY(-50%)
 
     // Arrow styling.
     &::before
@@ -104,13 +108,15 @@ tooltip-position(direction)
     visibility hidden
     opacity    0.1
 
+    &[aria-hidden=false]
+        visibility       visible
+        opacity          1
+        transition-duration 230ms
+
+[role=tooltip]
+[role=tooltip]::before
     transition-property        visibility, opacity, transform
     transition-duration        280ms
     transition-timing-function ease-out
 
 
-    &[aria-hidden=false]
-        visibility       visible
-        opacity          1
-
-        transition-duration 230ms
