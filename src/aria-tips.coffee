@@ -172,14 +172,14 @@
         # Initialize timeout in the scope.
         timeout = null
 
-        # `mouseover` event handler.
-        onMouseOver = =>
+        # `mouseover`-like event handler.
+        show = =>
 
             # Since the tooltip's appearance animation make the trigger lose
             # the focus, the tooltip needs to be its own trigger to prevent it
             # from "flashing". It's basically a debounce mechanism.
-            tip.addEventListener 'mouseover', onMouseOver
-            tip.addEventListener 'mouseout', onMouseOut
+            tip.addEventListener 'mouseover', show
+            tip.addEventListener 'mouseout', hide
 
             # If the tooltip is appearing or disappearing, clear the timeout.
             if timeout
@@ -198,32 +198,44 @@
                     tip.setAttribute 'aria-hidden', false
                 , 300
 
-        # `mouseover` event handler.
-        onMouseOut = ->
+        # `mouseover`-like event handler.
+        hide = ->
 
             # For the same reason as in `onMouseOver`, we debounce the
             # `mouseout` event handler.
             clearTimeout timeout
             timeout = setTimeout ->
                 timeout = null
-                tip.removeEventListener 'mouseover', onMouseOver
-                tip.removeEventListener 'mouseout', onMouseOut
+                tip.removeEventListener 'mouseover', show
+                tip.removeEventListener 'mouseout', hide
                 tip.setAttribute 'aria-hidden', true
             , 30
 
+        # keyboard events handler
+        onKeyUp = (event) ->
+            return unless event.keyCode is 27
+            hide()
+
 
         # Bind the actual events.
-        @addEventListener 'mouseover', onMouseOver
-        @addEventListener 'mouseout', onMouseOut
+        @addEventListener 'mouseover', show
+        @addEventListener 'focus', show
+        @addEventListener 'mouseout', hide
+        @addEventListener 'blur', hide
+        @addEventListener 'keyup', onKeyUp
 
         # Since a tooltip management is scoped (there is one pair of handlers
         # for onMouseOver/onMouseOut events for each trigger), we return an
         # unbind function so it can be called later on.
         unbindEvents = =>
-            tip.removeEventListener 'mouseover', onMouseOver
-            tip.removeEventListener 'mouseout', onMouseOut
-            @removeEventListener 'mouseover', onMouseOver
-            @removeEventListener 'mouseout', onMouseOut
+            # Just in case tooltip is displayed when we unbind it, first try to
+            # hide it.
+            hide()
+            @removeEventListener 'mouseover', show
+            @removeEventListener 'focus', show
+            @removeEventListener 'mouseout', hide
+            @removeEventListener 'blur', hide
+            @removeEventListener 'keyup', onKeyUp
 
         return unbindEvents
 
