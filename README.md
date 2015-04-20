@@ -50,7 +50,9 @@ If you bind a same tooltip to many elements, and you want it to be attached in a
 <span aria-describedby="tooltip-bottom" data-tooltip-direction="left">another element for same tooltip, will appear attached to the left side</span>
 ```
 
-You can also pass extra content to the tooltip using the [`aria-label`](http://www.w3.org/TR/wai-aria/states_and_properties#aria-label) attribute. I originally use it to describe the keyboard shortcuts bound to an element. So if a `aria-label` attribute is on the element, _aria-tips_ will append it in a `pre` element inside the tooltip when it appears.
+I originally want to describe the keyboard shortcuts bound to an element. So if a `data-accesskey` attribute is on the element, _aria-tips_ will append it in a `pre` element inside the tooltip when it appears.
+
+Note: We do *not* support `accesskey` due to its freaking implementation (as [W3C itself recommend to not using it](https://lists.w3.org/Archives/Public/www-tag/2015Apr/0025.html)). We previously support shortcut declaration using the [`aria-label`](http://www.w3.org/TR/wai-aria/states_and_properties#aria-label) attribute, but it's a misuse of the spec. Say, using `aria-label` for this purposes is deprecated but still supported for compatibility.
 
 
 ## Styles

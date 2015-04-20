@@ -151,7 +151,7 @@
         label.parentNode.removeChild label for label in labels
 
         # Get label from the trigger.
-        labelText = trigger.getAttribute 'aria-label'
+        labelText = trigger.dataset.accesskey || trigger.getAttribute 'aria-label'
 
         # If there is one, append it to the tooltip.
         if labelText

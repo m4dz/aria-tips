@@ -30,9 +30,9 @@
 
         <ul>
             <li>
-                <pre><code class="html">&lt;button aria-describedby="tooltip-bottom" aria-label="ctrl+o"&gt;hover me ↓&lt;/button&gt;
+                <pre><code class="html">&lt;button aria-describedby="tooltip-bottom" data-accesskey="ctrl+o"&gt;hover me ↓&lt;/button&gt;
 &lt;p role="tooltip" id="tooltip-bottom" data-tooltip-direction="bottom" aria-hidden="true"&gt;this is the hover description in a tooltip :]&lt;/p&gt;</code></pre>
-                <button aria-describedby="tooltip-bottom" aria-label="ctrl+o">hover me ↓</button>
+                <button aria-describedby="tooltip-bottom" data-accesskey="ctrl+o">hover me ↓</button>
                 <p role="tooltip" id="tooltip-bottom" data-tooltip-direction="bottom" aria-hidden="true">this is the hover description in a tooltip :]</p>
             </li>
             <li>
@@ -55,7 +55,7 @@
             </li>
             <li>
                 <pre><code class="html">&lt;div aria-describedby="tooltip-bottom" aria-label="ctrl+y"&gt;this one uses the same tip as the first-one&lt;/div&gt;</code></pre>
-                <div aria-describedby="tooltip-bottom" aria-label="ctrl+y">this one uses the same tip as the first-one</div>
+                <div aria-describedby="tooltip-bottom" aria-label="ctrl+y">this one uses the same tip as the first-one<br>(and declares a shortcut using <code>aria-label</code>, which is deprecated but still supported)</div>
             </li>
             <li>
                 <pre><code class="html">&lt;div aria-describedby="tooltip-left" data-tooltip-direction="top"&gt;this uses the 3rd tip but positionned on top&lt;/div&gt;</code></pre>
