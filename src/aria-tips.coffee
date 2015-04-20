@@ -223,6 +223,7 @@
         @addEventListener 'mouseout', hide
         @addEventListener 'blur', hide
         @addEventListener 'keyup', onKeyUp
+        @addEventListener 'click', hide
 
         # Since a tooltip management is scoped (there is one pair of handlers
         # for onMouseOver/onMouseOut events for each trigger), we return an
@@ -236,6 +237,7 @@
             @removeEventListener 'mouseout', hide
             @removeEventListener 'blur', hide
             @removeEventListener 'keyup', onKeyUp
+            @removeEventListener 'click', hide
 
         return unbindEvents
 
